@@ -45,6 +45,12 @@
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
+        <copy includeemptydirs="false" todir="${exampleBuild}">
+            <fileset dir="${example}">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
         <copy includeemptydirs="false" todir="${testBuild}">
             <fileset dir="tests">
                 <exclude name="**/*.launch"/>
