@@ -11,7 +11,7 @@ public class Main extends daifuku.Main {
         // Nothing to do
     }
 
-    public Main(InteractionFactory aFactory) {
+    public Main(daifuku.InteractionFactory aFactory) {
         super(aFactory);
     }
 
@@ -22,9 +22,15 @@ public class Main extends daifuku.Main {
 
     @Override
     public URL getIconURL() {
+        URL retVal = null;
         String resourcePath = getFactory().getString("IconResourcePath");
-		URL url = getInteraction().getClass().getResource(resourcePath);
-        return url;
+        // The resource path for the icon should be relative to the
+        // factory since that is where it is defined.
+        System.out.println(resourcePath);
+        retVal = getFactory().getClass().getResource(resourcePath);
+        System.out.println(retVal);
+
+        return retVal;
     }
 
     @Override

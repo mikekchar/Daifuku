@@ -30,7 +30,7 @@
     </path>
     <path id="example.classpath">
         <pathelement location="${build}"/>
-        <pathelement location="$exampleBuild"/>
+        <pathelement location="${exampleBuild}"/>
     </path>
     <target name="init">
         <!-- Create the time stamp -->

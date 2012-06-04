@@ -33,7 +33,7 @@ public class Application extends Context {
 	 * Creates a new MainContext.
      * This can be overridden to setup the context before entering it.
 	 */
-    Context create_main_context(InteractionFactory aFactory) {
+    protected Context create_main_context(InteractionFactory aFactory) {
 	    return new Main(aFactory);
 	}
 	
