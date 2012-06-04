@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+    <property name="version.num" value="0.1.0"/>
+    <buildnumber file="build.num"/>
+</project>
+

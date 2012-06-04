@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project  name="daifuku" basedir="." default="compile">
+
+    <import file="version.xml"/>
+
+    <property name="src" location="src"/>
+    <property name="tests" location="tests"/>
+    <property name="example" location="example"/>
+    <property name="build" location="build"/>
+    <property name="testBuild" location="testBuild"/>
+    <property name="exampleBuild" location="exampleBuild"/>
+    <property name="resultsDir" location="results"/>
+    <property name="doc" location="doc"/>
+    <property name="jar" location="daifuku.jar"/>
+    <property name="exampleJar" location="example.jar"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <property name="JUnit4" value="/usr/share/java/junit4.jar"/>
+    <property name="hamcrest" value="/usr/share/java/hamcrest-core.jar"/>
+    <path id="daifuku.classpath">
+        <pathelement location="${build}"/>
+    </path>
+    <path id="tests.classpath">
+        <pathelement location="${build}"/>
+        <pathelement location="${JUnit4}"/>
+        <pathelement location="${hamcrest}"/>
+        <pathelement location="${testBuild}"/>
+        <pathelement path="${java.class.path}"/>
+    </path>
+    <path id="example.classpath">
+        <pathelement location="${build}"/>
+        <pathelement location="$exampleBuild"/>
+    </path>
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <mkdir dir="${build}"/>
+        <mkdir dir="${testBuild}"/>
+        <mkdir dir="${exampleBuild}"/>
+        <mkdir dir="${resultsDir}"/>
+        <copy includeemptydirs="false" todir="${build}">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="${testBuild}">
+            <fileset dir="tests">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${testBuild}"/>
+        <delete dir="${exampleBuild}"/>
+        <delete dir="${resultsDir}"/>
+    </target>
+    <target name="cleanall" depends="clean">
+        <delete file="${jar}"/>
+        <delete file="${exampleJar}"/>
+    </target>
+    <target name="compile" depends="init">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac includeantruntime="false" debug="true" debuglevel="${debuglevel}" destdir="${build}" source="${source}" target="${target}">
+            <src path="${src}"/>
+            <classpath refid="daifuku.classpath"/>
+        </javac>
+    </target>
+    <target name="jar" depends="compile">
+        <jar destfile="${jar}" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Implementation-Version" 
+                        value="${version.num}-${build.number}"/>
+            </manifest>
+            <fileset dir="${build}"/>
+        </jar>
+    </target>
+    <target name="compileExample" depends="jar">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac includeantruntime="false" debug="true" debuglevel="${debuglevel}" destdir="${exampleBuild}" source="${source}" target="${target}">
+            <src path="${example}"/>
+            <classpath refid="example.classpath"/>
+        </javac>
+    </target>
+    <target name="exampleJar" depends="compileExample">
+        <jar destfile="${exampleJar}" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Implementation-Version" 
+                        value="${version.num}-${build.number}"/>
+                <attribute name="Main-Class" value="example.Example"/>
+            </manifest>
+            <zipfileset src="./daifuku.jar"/>
+            <fileset dir="${exampleBuild}"/>
+        </jar>
+    </target>
+    <target name="compileTests" depends="compile">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac includeantruntime="false" debug="true" debuglevel="${debuglevel}" destdir="${testBuild}" source="${source}" target="${target}">
+            <src path="${tests}"/>
+            <classpath refid="tests.classpath"/>
+        </javac>
+    </target>
+    <target name="test" depends="compileTests">
+        <junit printsummary="yes" haltonfailure="no">
+            <classpath refid="tests.classpath"/>
+
+            <formatter type="plain"/>
+
+            <batchtest fork="yes" todir="${resultsDir}">
+                <fileset dir="${tests}">
+                    <exclude name="**/mocks/*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+</project>
