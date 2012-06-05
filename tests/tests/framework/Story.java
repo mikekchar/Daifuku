@@ -1,5 +1,6 @@
 package tests.framework;
 
+import daifuku.swing.MainInteraction;
 import example.InteractionFactory;
 import example.Main;
 
@@ -15,7 +16,7 @@ public class Story {
 
 	protected final Example myExample;
 	protected Main myMainContext;
-	protected Main.Interaction myMainInteraction;
+	protected daifuku.swing.MainInteraction myMainInteraction;
 	
 	protected Story(InteractionFactory aFactory) {
 		myExample = new Example(aFactory);
@@ -29,7 +30,7 @@ public class Story {
 	 */
     void runExample() {
 		myMainContext = (Main)myExample.run();
-		myMainInteraction = (Main.Interaction)(myMainContext.getInteraction());
+		myMainInteraction = (daifuku.swing.MainInteraction)myMainContext.getInteraction();
 	}
 	
 	/**
@@ -41,7 +42,8 @@ public class Story {
 	}
 
 	/**
-	 * Make sure that Masumi has properly exited.  Usually this will be run by the tearDown methods.
+	 * Make sure that Masumi has properly exited.  
+     * Usually this will be run by the tearDown methods.
      * @throws java.lang.Exception
      */
 	public void tearDown() throws Exception {
