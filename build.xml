@@ -103,7 +103,7 @@
             <fileset dir="${exampleBuild}"/>
         </jar>
     </target>
-    <target name="compileTests" depends="compile">
+    <target name="compileTests" depends="compileExample">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac includeantruntime="false" debug="true" debuglevel="${debuglevel}" destdir="${testBuild}" source="${source}" target="${target}">
             <src path="${tests}"/>
