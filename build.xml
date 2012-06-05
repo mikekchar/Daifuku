@@ -23,6 +23,7 @@
     </path>
     <path id="tests.classpath">
         <pathelement location="${build}"/>
+        <pathelement location="${exampleBuild}"/>
         <pathelement location="${JUnit4}"/>
         <pathelement location="${hamcrest}"/>
         <pathelement location="${testBuild}"/>
