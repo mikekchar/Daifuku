@@ -7,7 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import tests.Story;
+import tests.framework.Story;
 import tests.mocks.InteractionFactory;
 
 /**

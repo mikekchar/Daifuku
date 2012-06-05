@@ -1,4 +1,4 @@
-package tests;
+package tests.framework;
 
 import example.InteractionFactory;
 import example.Main;

@@ -5,7 +5,7 @@ package tests.main;
 
 import static org.junit.Assert.*;
 import daifuku.swing.MainInteraction;
-import tests.Story;
+import tests.framework.Story;
 import tests.mocks.InteractionFactory;
 
 import org.junit.After;

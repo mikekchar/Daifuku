@@ -12,7 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import tests.Story;
+import tests.framework.Story;
 
 /**
  * Story to describe what happens when you close the Example

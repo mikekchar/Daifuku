@@ -118,6 +118,7 @@
 
             <batchtest fork="yes" todir="${resultsDir}">
                 <fileset dir="${tests}">
+                    <exclude name="**/framework/*.java"/>
                     <exclude name="**/mocks/*.java"/>
                 </fileset>
             </batchtest>

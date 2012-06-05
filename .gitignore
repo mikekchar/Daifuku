@@ -1,2 +1,8 @@
 build.num
 *.swp
+build
+*.jar
+exampleBuild
+testBuild
+results
+
