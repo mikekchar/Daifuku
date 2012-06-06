@@ -1,6 +1,7 @@
 package daifuku;
 
 import java.util.ResourceBundle;
+import daifuku.swing.MainInteraction;
 
 /**
  * Creates an Interaction given a Context.
@@ -56,5 +57,7 @@ public abstract class InteractionFactory {
 	 */
 	public abstract boolean showUI();
 	
-	public abstract Main.Interaction create_interaction(Main context);
+	public Main.Interaction create_interaction(Main context) {
+        return new MainInteraction(context, this);
+    }
 }

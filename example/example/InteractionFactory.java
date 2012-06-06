@@ -1,7 +1,7 @@
 package example;
 
-import daifuku.Main;
-import daifuku.swing.MainInteraction;
+import example.Main;
+import example.MainInteraction;
 
 /**
  * Implements the Swing version of the widgets for the Example.
@@ -22,9 +22,7 @@ public class InteractionFactory extends daifuku.InteractionFactory {
         return "example.Strings";
     }
 
-	@Override
 	public Main.Interaction create_interaction(Main context) {
 		return new MainInteraction(context, this);
 	}
-
 }
