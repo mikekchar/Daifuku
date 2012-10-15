@@ -1,6 +1,6 @@
 package tests.framework;
 
-import daifuku.swing.MainInteraction;
+import example.MainInteraction;
 import example.InteractionFactory;
 import example.Main;
 
@@ -16,7 +16,7 @@ public class Story {
 
 	protected final Example myExample;
 	protected Main myMainContext;
-	protected daifuku.swing.MainInteraction myMainInteraction;
+	protected MainInteraction myMainInteraction;
 	
 	protected Story(InteractionFactory aFactory) {
 		myExample = new Example(aFactory);
@@ -30,7 +30,7 @@ public class Story {
 	 */
     void runExample() {
 		myMainContext = (Main)myExample.run();
-		myMainInteraction = (daifuku.swing.MainInteraction)myMainContext.getInteraction();
+		myMainInteraction = (MainInteraction)(myMainContext.getInteraction());
 	}
 	
 	/**

@@ -1,9 +1,9 @@
 package daifuku;
 
 /**
- * The Application Context.
+ * The Application.
  * The Application only exists to setup the correct MainContext and
- * InteractionFactory.  On entry, it enters the MainContext and has
+ * FactoryInterface.  On entry, it enters the MainContext and has
  * no other functionality until it exits.
  * You can test to see if the Application is running 
  * (has not exited the Main Context yet) by calling is_running().
@@ -11,14 +11,15 @@ package daifuku;
  * @author Mike Charlton
  *
  */
-public class Application extends Context {
+public abstract class Application implements ParentInterface {
 	
 	protected boolean amIRunning;
+    protected FactoryInterface myFactory;
 	
-	protected Application(InteractionFactory aFactory) {
-		super(aFactory);
+	public Application(FactoryInterface aFactory) {
+		myFactory = aFactory;
 		amIRunning = false;
-		aFactory.loadStrings();
+		myFactory.loadStrings();
 	}
 
     /**
@@ -31,20 +32,18 @@ public class Application extends Context {
 	
 	/**
 	 * Creates a new MainContext.
-     * This can be overridden to setup the context before entering it.
+     * This must be overridden to setup the context before entering it.
 	 */
-    protected Context create_main_context(InteractionFactory aFactory) {
-	    return new Main(aFactory);
-	}
+    protected abstract Context create_main_context(FactoryInterface aFactory);
 	
 	/**
 	 * Creates a new main context and enters it.  
      * Returns the context it created.
 	 */
 	public Context run() {
-		Context context = create_main_context(getFactory());
+		Context context = create_main_context(myFactory);
 		amIRunning = true;
-		context.enter(this);
+		context.enter();
 		return context;
 	}
 	
@@ -55,7 +54,6 @@ public class Application extends Context {
      * anything before exiting in the Main Context you must do it before
 	 * calling super().
 	 */
-	@Override
 	public void exit() {
 		amIRunning = false;
 		exit_system();
@@ -81,8 +79,7 @@ public class Application extends Context {
 	/**
 	 * The Application has no interaction so it returns null
 	 */
-	@Override
-	public Interaction create_interaction() {
+	public Context.Interaction getInteraction() {
 		return null;
 	}
 

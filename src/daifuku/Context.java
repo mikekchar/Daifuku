@@ -46,27 +46,20 @@ public abstract class Context {
 	}
 	
 	private boolean haveIEntered;
-	final InteractionFactory myFactory;
-	final Interaction myInteraction;
-	Context myParent;
+	final FactoryInterface myFactory;
+	final ParentInterface myParent;
 
-	Context(InteractionFactory aFactory) {
-        myFactory = aFactory;
+	Context(ParentInterface aParent, FactoryInterface aFactory) {
 		haveIEntered = false;
-		myParent = null;
-		myInteraction = create_interaction();
+		myParent = aParent;
+        myFactory = aFactory;
 	}
 
-	/**
-	 * Creates the  concrete Interaction for the Context.
-	 * Each Context must implement the code:
-	 * <code>
-	 * 			factory.create_interaction(this);
-	 * </code>
-	 * @return the concrete Interaction
-	 * TODO Try to do using generics.
-	 */
-	protected abstract Interaction create_interaction();
+    /**
+     * Returns the Interaction for this context.
+     * The concrete class must return this
+     */
+    public abstract Interaction getInteraction();
 
 	/**
 	 * Enter a new UI Context.
@@ -80,13 +73,12 @@ public abstract class Context {
 	 * 
 	 * @param aParent The context that was active when this Context is entered.
 	 */
-    void enter(Context aParent) {
+    void enter() {
 		haveIEntered = true;
-		myParent = aParent;
-		if (myInteraction != null) {
-			myInteraction.open();
-			if (myParent.myInteraction != null) {
-				myParent.myInteraction.add(myInteraction);
+		if (getInteraction() != null) {
+			getInteraction().open();
+			if (myParent.getInteraction() != null) {
+				myParent.getInteraction().add(getInteraction());
 			}
 		}
 	}
@@ -104,37 +96,27 @@ public abstract class Context {
 	 */
     void exit() {
 		if (is_entered()) {
-			if(myInteraction != null) {
-				if (myParent.myInteraction != null) {
-					myParent.myInteraction.remove(myInteraction);
+			if(getInteraction() != null) {
+				if (myParent.getInteraction() != null) {
+					myParent.getInteraction().remove(getInteraction());
 				}
-				myInteraction.close();
+				getInteraction().close();
 			}
 			haveIEntered = false;
 		}
 	}
-	
-
-	/**
-	 * @return the interaction for this context.
-	 */
-	public Interaction getInteraction() {
-		return myInteraction;
-	}
 
     /**
      * Return the factory for this context.
-     * Note: You *must* downcast this to your actual type when you use it!
-     * Otherwise you will only be able to create the Main Context.
      */
-    public InteractionFactory getFactory() {
+    public FactoryInterface getFactory() {
         return myFactory;
     }
 
     /**
      * Return the parent for this context.
      */
-    public Context getParent() {
+    public ParentInterface getParent() {
         return myParent;
     }
 }

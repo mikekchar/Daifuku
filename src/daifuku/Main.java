@@ -14,7 +14,7 @@ import java.lang.String;
  * @author Mike Charlton
  *
  */
-public class Main extends Context {
+public abstract class Main extends Context {
 	
 	/**
 	 * The Main.Interaction contains the main window frame widgets.
@@ -27,14 +27,20 @@ public class Main extends Context {
 		// Nothing to do
 	}
 
-	public Main(InteractionFactory aFactory) {
-		super(aFactory);
+    protected Interaction myInteraction;
+
+	public Main(ParentInterface aParent, FactoryInterface aFactory) {
+		super(aParent, aFactory);
+        myInteraction = aFactory.create_interaction(this);
 	}
 
-	@Override
-	public Context.Interaction create_interaction(){
-		return getFactory().create_interaction(this);
-	}
+    /**
+     * Return the interaction for this object
+     */
+    @Override
+    public Context.Interaction getInteraction() {
+        return (Context.Interaction)myInteraction;
+    }
 
 	/**
 	 * When the Main Context exits, the Application should exit too.

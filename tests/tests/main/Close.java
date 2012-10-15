@@ -51,7 +51,7 @@ public class Close extends Story {
 	public void closing_the_main_interaction_exits_Example() {
 		// When
 		assertTrue(myExample.is_running());
-		((MainInteraction)myMainInteraction).request_closure();
+		myMainInteraction.request_closure();
 		
 		// It should
 		assertFalse(myMainInteraction.is_open());

@@ -1,5 +1,7 @@
 package example;
+import java.util.ResourceBundle;
 
+import daifuku.DaifukuFactory;
 import example.Main;
 import example.MainInteraction;
 
@@ -9,20 +11,15 @@ import example.MainInteraction;
  * @author Mike Charlton
  *
  */
-public class InteractionFactory extends daifuku.InteractionFactory {
-	
-	@Override
-	public boolean showUI() {
-        // This is a production factory, show the UI
-		return true;
-	}
+public class InteractionFactory extends DaifukuFactory {
 
-    @Override
+    @Override    
     public String stringsBundleName() {
         return "example.Strings";
     }
 
-	public Main.Interaction create_interaction(Main context) {
-		return new MainInteraction(context, this);
+    @Override
+	public daifuku.Main.Interaction create_interaction(daifuku.Main context) {
+		return new MainInteraction((example.Main)context, this);
 	}
 }

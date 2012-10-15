@@ -1,11 +1,8 @@
 package daifuku;
 
-import java.util.ResourceBundle;
-import daifuku.swing.MainInteraction;
-
 /**
  * Creates an Interaction given a Context.
- * This is an abstract class.
+ * This is an interface.
  * The Interactions are implemented separately from the Context.  This
  * is for two reasons.  First, it creates a separation from the business
  * logic of the application (which exists in the Context) and the
@@ -22,31 +19,21 @@ import daifuku.swing.MainInteraction;
  * @author Mike Charlton
  *
  */
-public abstract class InteractionFactory {
-		
-	private ResourceBundle strings;
-
-    /**
-     * Bundle resource class name for strings in the application.
-     * Overload this method to load the correct strings for your application
-     */
-    public String stringsBundleName() {
-        return "daifuku.Strings";
-    }
-
+public interface FactoryInterface {
     /** 
      * Load the string resources for these Contexts.
      */
-	public void loadStrings() {
-		strings = ResourceBundle.getBundle(stringsBundleName());
-	}
-	
+    public void loadStrings();
+
+    /**
+     * Bundle resource class name for strings in the application.
+     */
+    public String stringsBundleName();
+
     /**
      * Return the correct string for a given key
      */
-	public String getString(String key) {
-		return strings.getString(key);
-	}
+	public String getString(String key);
 	 
 	/**
      * Returns true if the Interactions should display on the screen.
@@ -55,9 +42,11 @@ public abstract class InteractionFactory {
      * called by open() on the interaction before displaying the UI.
 	 * @return true if the UI should be shown.
 	 */
-	public abstract boolean showUI();
-	
-	public Main.Interaction create_interaction(Main context) {
-        return new MainInteraction(context, this);
-    }
+	public boolean showUI();
+
+    /**
+     * The default FactoryInteraction demands that you can create
+     * an interaction for a Main context.
+     */
+	public Main.Interaction create_interaction(Main context);
 }

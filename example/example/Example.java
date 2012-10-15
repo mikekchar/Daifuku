@@ -1,8 +1,6 @@
 package example;
 import daifuku.Context;
 import daifuku.Application;
-import example.InteractionFactory;
-import example.Main;
 
 import javax.swing.*;
 
@@ -22,8 +20,8 @@ public class Example extends Application {
 	 * Creates a new MainContext.
 	 */
     @Override
-    protected Context create_main_context(daifuku.InteractionFactory aFactory) {
-	    return new example.Main(aFactory);
+    protected Context create_main_context(daifuku.FactoryInterface aFactory) {
+	    return new Main(this, aFactory);
 	}
 
     public String currentLookAndFeel() {

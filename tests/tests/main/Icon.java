@@ -52,7 +52,7 @@ public class Icon extends Story {
 		assertTrue(myExample.is_running());
 		
 		// It should
-		assertTrue(((MainInteraction)myMainInteraction).get_icon_image() != null);
+		assertTrue(myMainInteraction.get_icon_image() != null);
 	}
 
 }

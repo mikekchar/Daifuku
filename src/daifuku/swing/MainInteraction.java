@@ -5,7 +5,7 @@ import java.net.URL;
 import java.lang.String;
 
 import daifuku.Context;
-import daifuku.InteractionFactory;
+import daifuku.FactoryInterface;
 import daifuku.Main;
 import daifuku.Widget;
 import daifuku.swing.widgets.Window;
@@ -18,9 +18,9 @@ public class MainInteraction implements Main.Interaction {
 	private final Main myContext;
 	private boolean amIOpen;
 	private final Window myWidget;
-	private final InteractionFactory myFactory;
+	private final FactoryInterface myFactory;
 
-	public MainInteraction(Main aContext, InteractionFactory aFactory) {
+	public MainInteraction(Main aContext, FactoryInterface aFactory) {
 		myFactory = aFactory;
 		myContext = aContext;
 		amIOpen = false;

@@ -4,6 +4,8 @@ import java.net.URL;
 import java.lang.String;
 
 import daifuku.Context;
+import daifuku.ParentInterface;
+import daifuku.FactoryInterface;
 
 public class Main extends daifuku.Main {
 
@@ -11,13 +13,8 @@ public class Main extends daifuku.Main {
         // Nothing to do
     }
 
-    public Main(daifuku.InteractionFactory aFactory) {
-        super(aFactory);
-    }
-
-    @Override
-    public Context.Interaction create_interaction() {
-        return getFactory().create_interaction((daifuku.Main)this);
+    public Main(daifuku.ParentInterface aParent, daifuku.FactoryInterface aFactory) {
+        super(aParent, aFactory);
     }
 
     @Override
