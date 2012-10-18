@@ -6,7 +6,7 @@ package tests.main;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import daifuku.swing.MainInteraction;
-import tests.mocks.InteractionFactory;
+import tests.mocks.ExampleFactory;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,7 +23,7 @@ import tests.framework.Story;
 public class Close extends Story {
 	
 	public Close() {
-		super(new InteractionFactory());
+		super(new ExampleFactory());
 	}
 	
 	/**

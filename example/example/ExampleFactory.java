@@ -11,15 +11,14 @@ import example.MainInteraction;
  * @author Mike Charlton
  *
  */
-public class InteractionFactory extends DaifukuFactory {
+public class ExampleFactory extends DaifukuFactory implements example.FactoryInterface {
 
     @Override    
     public String stringsBundleName() {
         return "example.Strings";
     }
 
-    @Override
-	public daifuku.Main.Interaction create_interaction(daifuku.Main context) {
-		return new MainInteraction((example.Main)context, this);
+	public Main.Interaction create_interaction(Main context) {
+		return new MainInteraction(context, this);
 	}
 }

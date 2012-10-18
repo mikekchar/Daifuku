@@ -1,7 +1,7 @@
 package tests.framework;
 
 import example.MainInteraction;
-import example.InteractionFactory;
+import example.FactoryInterface;
 import example.Main;
 
 import tests.mocks.Example;
@@ -18,7 +18,7 @@ public class Story {
 	protected Main myMainContext;
 	protected MainInteraction myMainInteraction;
 	
-	protected Story(InteractionFactory aFactory) {
+	protected Story(example.FactoryInterface aFactory) {
 		myExample = new Example(aFactory);
 		myMainContext = null;
 		myMainInteraction = null;

@@ -10,7 +10,7 @@ import example.Main;
  */
 public class MainInteraction extends daifuku.swing.MainInteraction implements Main.Interaction {
 
-	public MainInteraction(Main aContext, InteractionFactory aFactory) {
+	public MainInteraction(Main aContext, example.FactoryInterface aFactory) {
         super(aContext, aFactory);
 	}
 }

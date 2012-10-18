@@ -11,17 +11,20 @@ import javax.swing.*;
  *
  */
 public class Example extends Application {
-	
-	public Example(InteractionFactory aFactory) {
+
+    protected example.FactoryInterface myExampleFactory;
+
+	public Example(example.FactoryInterface aFactory) {
 		super(aFactory);
+        myExampleFactory = aFactory;        
 	}
 
 	/**
 	 * Creates a new MainContext.
 	 */
     @Override
-    protected Context create_main_context(daifuku.FactoryInterface aFactory) {
-	    return new Main(this, aFactory);
+    protected Context create_main_context() {
+	    return new Main(this, myExampleFactory);
 	}
 
     public String currentLookAndFeel() {
@@ -77,7 +80,7 @@ public class Example extends Application {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Example example = new Example(new InteractionFactory());
+		Example example = new Example(new ExampleFactory());
 
 		example.run();
 	}

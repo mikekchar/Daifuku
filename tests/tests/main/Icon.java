@@ -6,7 +6,7 @@ package tests.main;
 import static org.junit.Assert.*;
 import daifuku.swing.MainInteraction;
 import tests.framework.Story;
-import tests.mocks.InteractionFactory;
+import tests.mocks.ExampleFactory;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,7 +22,7 @@ import org.junit.Test;
 public class Icon extends Story {
 	
 	public Icon() {
-		super(new InteractionFactory());
+		super(new ExampleFactory());
 	}
 	
 	/**
@@ -50,6 +50,7 @@ public class Icon extends Story {
 	public void the_Main_Interaction_displays_an_icon() {
 		// When
 		assertTrue(myExample.is_running());
+        assertTrue(myMainContext.getIconURL() != null);
 		
 		// It should
 		assertTrue(myMainInteraction.get_icon_image() != null);

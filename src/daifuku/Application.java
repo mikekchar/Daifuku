@@ -34,14 +34,14 @@ public abstract class Application implements ParentInterface {
 	 * Creates a new MainContext.
      * This must be overridden to setup the context before entering it.
 	 */
-    protected abstract Context create_main_context(FactoryInterface aFactory);
+    protected abstract Context create_main_context();
 	
 	/**
 	 * Creates a new main context and enters it.  
      * Returns the context it created.
 	 */
 	public Context run() {
-		Context context = create_main_context(myFactory);
+		Context context = create_main_context();
 		amIRunning = true;
 		context.enter();
 		return context;

@@ -1,6 +1,6 @@
 package tests.mocks;
 
-public class InteractionFactory extends example.InteractionFactory {
+public class ExampleFactory extends example.ExampleFactory {
 
 	@Override
 	public boolean showUI() {

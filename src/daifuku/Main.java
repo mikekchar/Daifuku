@@ -31,8 +31,11 @@ public abstract class Main extends Context {
 
 	public Main(ParentInterface aParent, FactoryInterface aFactory) {
 		super(aParent, aFactory);
-        myInteraction = aFactory.create_interaction(this);
 	}
+
+    protected void setup_interaction() {
+        myInteraction = myFactory.create_interaction(this);
+    }
 
     /**
      * Return the interaction for this object

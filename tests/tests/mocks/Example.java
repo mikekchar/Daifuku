@@ -1,7 +1,7 @@
 package tests.mocks;
 
 import daifuku.Application;
-import example.InteractionFactory;
+import example.FactoryInterface;
 
 /**
  * Mock for Example.
@@ -14,7 +14,7 @@ import example.InteractionFactory;
  */
 public class Example extends example.Example {
 	
-	public Example(InteractionFactory aFactory){
+	public Example(example.FactoryInterface aFactory){
 		super(aFactory);
 	}
 	

@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tests.framework.Story;
-import tests.mocks.InteractionFactory;
+import tests.mocks.ExampleFactory;
 
 /**
  * Story to describe what happens when you start the Example
@@ -20,7 +20,7 @@ import tests.mocks.InteractionFactory;
 public class Startup extends Story{
 
 	public Startup() {
-		super(new InteractionFactory());
+		super(new ExampleFactory());
 	}
 
 	@Before
