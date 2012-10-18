@@ -8,6 +8,9 @@ package example;
  */
 public interface FactoryInterface extends daifuku.FactoryInterface {
 
-	public Main.Interaction create_interaction(Main context);
+    /**
+     * Create the interaction for the Example version of the Main context.
+     */
+	public example.Main.Interaction create_interaction(example.Main context);
 }
 

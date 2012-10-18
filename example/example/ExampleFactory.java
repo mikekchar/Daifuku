@@ -13,11 +13,17 @@ import example.MainInteraction;
  */
 public class ExampleFactory extends DaifukuFactory implements example.FactoryInterface {
 
+    /**
+     * Provides the name for the Strings resource bundle.
+     */
     @Override    
     public String stringsBundleName() {
         return "example.Strings";
     }
 
+    /**
+     * Creates a Main Interaction.
+     */
 	public Main.Interaction create_interaction(Main context) {
 		return new MainInteraction(context, this);
 	}

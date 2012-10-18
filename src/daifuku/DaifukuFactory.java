@@ -10,13 +10,23 @@ import java.util.ResourceBundle;
 public class DaifukuFactory implements FactoryInterface {
 	
 	private ResourceBundle strings;
+
+    /**
+     * Returns true if the UI should be shown.
+     * This is useful in tests.  If you mock the factory you can turn
+     * off the UI and run the tests without a display.
+     */
 	public boolean showUI() {
-        // This is a production factory, show the UI
+        // By default show the UI
 		return true;
 	}
 
+    /**
+     * Return the name of the string Resource.
+     * This must be overriden in the concrete classes.
+     */
     public String stringsBundleName() {
-        return "example.Strings";
+        return null;
     }
 
     /** 

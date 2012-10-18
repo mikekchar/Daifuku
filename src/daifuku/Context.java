@@ -39,7 +39,7 @@ public abstract class Context {
 		public void remove(Interaction anInteraction);
 
         // Return the main container Widget for this interaction.
-		public Widget getWidget();
+		public WidgetInterface getWidget();
 
         // Returns true if this interaction contains the passed interaction.
 		public boolean contains(Interaction anInteraction);

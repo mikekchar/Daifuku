@@ -27,23 +27,15 @@ public abstract class Main extends Context {
 		// Nothing to do
 	}
 
-    protected Interaction myInteraction;
-
 	public Main(ParentInterface aParent, FactoryInterface aFactory) {
 		super(aParent, aFactory);
 	}
-
-    protected void setup_interaction() {
-        myInteraction = myFactory.create_interaction(this);
-    }
 
     /**
      * Return the interaction for this object
      */
     @Override
-    public Context.Interaction getInteraction() {
-        return (Context.Interaction)myInteraction;
-    }
+    public abstract Context.Interaction getInteraction();
 
 	/**
 	 * When the Main Context exits, the Application should exit too.
@@ -57,18 +49,14 @@ public abstract class Main extends Context {
 
     /**
      * Return a URL to resource that contains an icon.
-     * Override this in your own Main context.  It defaults to null
-     * which means that there will be no icon.
+     * Override this in your own Main context.  
+     * null means that there will be no icon
      */
-    public URL getIconURL() {
-        return null;
-    }
+    public abstract URL getIconURL();
 
     /**
      * Return the title of the main window.
      * Override this in your own Main context.
      */
-    public String getWindowTitle() {
-        return "Main Window";
-    }
+    public abstract String getWindowTitle();
 }

@@ -1,0 +1,3 @@
+daifuku/DaifukuFactory.java: various methods shouldn't return null.  Either make it an abstract class or remove it altogether.
+
+

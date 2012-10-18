@@ -9,10 +9,10 @@ import java.lang.String;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import daifuku.Widget;
+import daifuku.WidgetInterface;
 import daifuku.swing.MainInteraction;
 
-public class Window extends JFrame implements Widget{
+public class Window extends JFrame implements WidgetInterface {
 
 	/**
 	 * A Mediator to get events from the JFrame
@@ -69,21 +69,21 @@ public class Window extends JFrame implements Widget{
    /**
     * Add a widget to the contents of the pane
     */
-	public void add(Widget aWidget) {
+	public void add(WidgetInterface aWidget) {
 		this.getContentPane().add((Component) aWidget);
 	}
 
     /**
      * Remove a widget from the contents of the pane
      */
-	public void remove(Widget aWidget) {
-		this.getContentPane().remove((Component)aWidget);
+	public void remove(WidgetInterface aWidget) {
+		this.getContentPane().remove((Component) aWidget);
 	}
 
     /**
      * Returns true if the pane contains the widget
      */
-	public boolean contains(Widget aWidget) {
+	public boolean contains(WidgetInterface aWidget) {
 		boolean retVal;
 
         retVal= false;

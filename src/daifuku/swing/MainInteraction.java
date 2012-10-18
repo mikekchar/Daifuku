@@ -7,7 +7,7 @@ import java.lang.String;
 import daifuku.Context;
 import daifuku.FactoryInterface;
 import daifuku.Main;
-import daifuku.Widget;
+import daifuku.WidgetInterface;
 import daifuku.swing.widgets.Window;
 
 /**
@@ -103,7 +103,7 @@ public class MainInteraction implements Main.Interaction {
     /**
      * Returns the Window
      */
-	public Widget getWidget() {
+	public WidgetInterface getWidget() {
 		return myWidget;
 	}
 
