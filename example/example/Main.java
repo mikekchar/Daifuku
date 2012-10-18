@@ -47,7 +47,6 @@ public class Main extends daifuku.Main {
         String resourcePath = myExampleFactory.getString("IconResourcePath");
         // The resource path for the icon should be relative to the
         // factory since that is where it is defined.
-        System.out.println(resourcePath);
         retVal = myExampleFactory.getClass().getResource(resourcePath);
 
         return retVal;

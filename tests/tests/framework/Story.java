@@ -8,6 +8,10 @@ import tests.mocks.Example;
 
 /**
  * Implements a context in which to test Daifuku.
+ * Essentially this is a wrapper for a unit test.  This is
+ * the basis of the type of BDD that I tend to do, but it
+ * is far from complete.  See some of the tests to
+ * see how it works.
  * 
  * @author Mike Charlton
  *
@@ -25,8 +29,8 @@ public class Story {
 	}
 	
 	/**
-	 * Run example.  Usually this will be run by the setUp 
-     * methods in the concrete classes.
+	 * Run example.  
+     * Usually this will be run by the setUp methods in the concrete classes.
 	 */
     void runExample() {
 		myMainContext = (Main)myExample.run();
