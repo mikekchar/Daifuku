@@ -8,10 +8,10 @@ advantages over Model-View-Controller (MVC).
 The most popular way of organizing UI code (other than just jamming it in
 anywhere) is called Model View Controller (MVC). The idea is that you have Model
 objects which hold the structure and logic of underlying problem domain
-objects.  You have View objects who represent the way you represent those
-objects to the user.  Finaly, you have Controller objects that represent the
+objects.  You have View objects which describe the way you represent those
+objects to the user.  Finaly, you have Controller objects that describe the
 way that the user interacts with the objects.  Though, it's not completely
-correct, you can roughly view this as being problem domain processing object,
+correct, you can roughly view this as being problem domain processing objects,
 output objects and input objects.
 
 MVC has many advantages.  Abstracting the problem domain objects from
@@ -46,13 +46,13 @@ which makes absolutely no sense what-so-ever.
 I have been experimenting with an alternative way of organizing
 UI code.  It has a concept of a "Context".  A Context is an activity
 that a user wants to do.  An example would be loading a file, or
-entering grain information.  I would calls these FileLoadingContext and 
-GrainEnteringContext, respectively.  This Context is an abstract
+entering data.  I would calls these FileLoadingContext and 
+DataEnteringContext, respectively.  The Context is basically a
 class that describes business logic.  It contains all the model
 objects necessary to complete the task that it is doing.  It also
-contains an abstract Interaction.
+contains an Interaction.
 
-The abstract Interaction is simply a contract with the Context object.
+The Interaction is simply a contract with the Context object.
 It describes how information will be presented to the user and
 provides a way for the user to interact with he Context.  The Interaction
 has 3 different kinds of methods: Methods which update the Interaction
@@ -65,10 +65,10 @@ on the Context.  I have always had each Context object containing
 exactly one abstract Interaction object, but there is no reason why
 you can't have more.
 
-The concrete Interaction objects are implementations of the abstract
+The concrete Interaction objects are implementations of the
 Interaction interfaces on the Contexts.  They contain objects from the
 GUI widget library.  It is a good idea *not* to inherit from
-the GUI widget library, since a FileLoadingInteraction *uses* a
+the GUI widget library, since a FileLoadingInteraction should *use* a
 FileDialog rather than being one.  What I often do is create
 new Widget classes which are composite widgets from the library
 that has a convenient interfact.  I then use those widgets in
