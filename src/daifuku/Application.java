@@ -15,6 +15,7 @@ public abstract class Application implements ParentInterface {
 	
 	protected boolean amIRunning;
     protected FactoryInterface myFactory;
+    protected Context myMainContext;
 	
 	public Application(FactoryInterface aFactory) {
 		myFactory = aFactory;
@@ -41,10 +42,11 @@ public abstract class Application implements ParentInterface {
      * Returns the context it created.
 	 */
 	public Context run() {
-		Context context = create_main_context();
+		myMainContext = create_main_context();
 		amIRunning = true;
-		context.enter();
-		return context;
+        myMainContext.create_interaction();
+		myMainContext.enter();
+		return myMainContext;
 	}
 	
 	/**
@@ -56,6 +58,10 @@ public abstract class Application implements ParentInterface {
 	 */
 	public void exit() {
 		amIRunning = false;
+        if (myMainContext != null) {
+            myMainContext.dispose_interaction();
+            myMainContext = null;
+        }
 		exit_system();
 	}
 

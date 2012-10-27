@@ -31,12 +31,6 @@ public abstract class Main extends Context {
 		super(aParent, aFactory);
 	}
 
-    /**
-     * Return the interaction for this object
-     */
-    @Override
-    public abstract Context.Interaction getInteraction();
-
 	/**
 	 * When the Main Context exits, the Application should exit too.
 	 */

@@ -106,12 +106,10 @@ public class Window extends JFrame implements Main.Interaction {
 
 	/**
 	 * Actually close the window.
-     * Note: The window is disposed, so it can't be opened again.
-     * TODO: Move dispose somewhere else.
+     * Note: The window is not disposed, so it can be opened again.
 	 */
 	public void close() {
 		setVisible(false);
-        dispose();
 		amIOpen = false;
 	}
 

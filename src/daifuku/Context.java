@@ -29,6 +29,9 @@ public abstract class Context {
         // Hide the interaction from the user
 		public void close();
 
+        // Free resources and indicate that the window can not be opened again.
+        public void dispose();
+
         // Returns true if the interaction is open
 		public boolean is_open();
 
@@ -53,10 +56,33 @@ public abstract class Context {
 	}
 
     /**
+     * Creates the Interaction for this context.
+     * The concrete class must implement this, but generally it will look like:
+     * myInteraction = myFactory.create_interaction(this);
+     * Make sure that myFactory is using the correct (highest level)
+     * factory interface or else you will create the wrong kind of interaction.
+     */
+    public abstract void create_interaction();
+
+    /**
      * Returns the Interaction for this context.
      * The concrete class must return this
      */
     public abstract Interaction getInteraction();
+
+    /**
+     * Dispose the Interaction.
+     * This frees the resources for the interaction.  The interaction
+     * can not be opened again unless create_interaction() is called.
+     * The concrete class will likely want to override this functionality
+     * in order to set their myInteraction reference to null.
+     */
+    public void dispose_interaction() {
+        Interaction interaction = getInteraction();
+        if (interaction != null) {
+            interaction.dispose();
+        }
+    }
 
 	/**
 	 * Enter a new UI Context.

@@ -25,7 +25,17 @@ public class Main extends daifuku.Main {
     public Main(daifuku.ParentInterface aParent, example.FactoryInterface aFactory) {
         super(aParent, aFactory);
         myExampleFactory = aFactory;
+    }
+
+    @Override
+    public void create_interaction() {
         myInteraction = myExampleFactory.create_interaction(this);
+    }
+
+    @Override
+    public void dispose_interaction() {
+        super.dispose_interaction();
+        myInteraction = null;
     }
 
     /**
