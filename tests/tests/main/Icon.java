@@ -1,7 +1,6 @@
 package tests.main;
 
 import static org.junit.Assert.*;
-import daifuku.swing.MainInteraction;
 import tests.framework.Story;
 import tests.mocks.ExampleFactory;
 
@@ -51,7 +50,7 @@ public class Icon extends Story {
         assertTrue(myMainContext.getIconURL() != null);
 		
 		// It should
-		assertTrue(myMainInteraction.get_icon_image() != null);
+		assertTrue(((example.swing.Window)myMainInteraction).getIconImage() != null);
 	}
 
 }

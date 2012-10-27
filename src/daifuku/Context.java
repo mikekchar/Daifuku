@@ -38,9 +38,6 @@ public abstract class Context {
         // Remove the widgets in the passed interaction from this one.
 		public void remove(Interaction anInteraction);
 
-        // Return the main container Widget for this interaction.
-		public WidgetInterface getWidget();
-
         // Returns true if this interaction contains the passed interaction.
 		public boolean contains(Interaction anInteraction);
 	}
@@ -105,6 +102,13 @@ public abstract class Context {
 			haveIEntered = false;
 		}
 	}
+
+    /**
+     * Returns true if the UI should be shown.
+     */
+    public boolean should_show_UI() {
+        return myFactory.showUI();
+    }
 
     /**
      * Return the factory for this context.

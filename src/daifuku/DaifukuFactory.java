@@ -44,6 +44,14 @@ public class DaifukuFactory implements FactoryInterface {
 		return strings.getString(key);
 	}
 
+    /**
+     * Create an Interaction for the daifuku.Main context.
+     * Note: This returns null because I don't want people
+     * accidently creating an Interaction for daifuku.Main
+     * rather than their concrete Main class.
+     * TODO: Perhaps I should just remove this, but I want
+     * to show an example of how to construct it.
+     */
 	public Main.Interaction create_interaction(Main context) {
 		return null;
 	}

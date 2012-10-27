@@ -2,8 +2,8 @@ package example;
 import java.util.ResourceBundle;
 
 import daifuku.DaifukuFactory;
-import example.Main;
-import example.MainInteraction;
+import example.swing.Window;
+
 
 /**
  * Implements the Swing version of the widgets for the Example.
@@ -25,6 +25,6 @@ public class ExampleFactory extends DaifukuFactory implements example.FactoryInt
      * Creates a Main Interaction.
      */
 	public Main.Interaction create_interaction(Main context) {
-		return new MainInteraction(context, this);
+		return new example.swing.Window(context);
 	}
 }

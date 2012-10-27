@@ -1,6 +1,5 @@
 package tests.framework;
 
-import example.MainInteraction;
 import example.FactoryInterface;
 import example.Main;
 
@@ -20,7 +19,7 @@ public class Story {
 
 	protected final Example myExample;
 	protected Main myMainContext;
-	protected MainInteraction myMainInteraction;
+	protected Main.Interaction myMainInteraction;
 	
 	protected Story(example.FactoryInterface aFactory) {
 		myExample = new Example(aFactory);
@@ -34,7 +33,7 @@ public class Story {
 	 */
     void runExample() {
 		myMainContext = (Main)myExample.run();
-		myMainInteraction = (MainInteraction)(myMainContext.getInteraction());
+		myMainInteraction = (Main.Interaction)(myMainContext.getInteraction());
 	}
 	
 	/**

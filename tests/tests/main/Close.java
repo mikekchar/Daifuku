@@ -5,7 +5,6 @@ package tests.main;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import daifuku.swing.MainInteraction;
 import tests.mocks.ExampleFactory;
 
 import org.junit.After;
@@ -51,7 +50,7 @@ public class Close extends Story {
 	public void closing_the_main_interaction_exits_Example() {
 		// When
 		assertTrue(myExample.is_running());
-		myMainInteraction.request_closure();
+		((example.swing.Window)myMainInteraction).request_closure();
 		
 		// It should
 		assertFalse(myMainInteraction.is_open());
