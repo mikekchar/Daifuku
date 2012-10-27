@@ -86,13 +86,16 @@ public class Window extends JFrame implements Main.Interaction {
 
 	/**
 	 * Request that the window close.
-	 * This is called by the FrameMediator.  You mustn't close the 
-     * window directly here because the Context needs to dispose 
-     * of the interaction.  So we ask the Context to exit which
-	 * will close the Interaction.
+	 * This is called by the FrameMediator.
+     * At the moment we want the application to quit here, but
+     * this can be overridden in case you want to exit the Main
+     * Context, but want to keep the application running (if the
+     * application continues on in the systray, for example).
+     * In that case, simply override this to 
+     *     myContext.exit();
 	 */
 	public void request_closure() {
-		myContext.exit();
+		myContext.quit();
 	}
 
     /**

@@ -56,4 +56,30 @@ public class Close extends Story {
 		assertFalse(myMainInteraction.is_open());
 		assertFalse(myExample.is_running());
 	}
+
+    /**
+     * Simply exiting the main context closes the window but
+     * doesn't exit the application.
+     * If we enter the context again, the window opens.
+     */
+	@Test
+	public void exiting_the_context_doesnt_exit_the_application() {
+		// When
+		assertTrue(myExample.is_running());
+        myMainContext.exit();
+		
+		// It should
+        assertFalse(myMainContext.getInteraction() == null);
+		assertFalse(myMainInteraction.is_open());
+		assertTrue(myExample.is_running());
+
+        // Furthermore, when
+        myMainContext.enter();
+
+        // It should
+        assertFalse(myMainContext.getInteraction() == null);
+		assertTrue(myMainInteraction.is_open());
+		assertTrue(myExample.is_running());
+	}
+
 }

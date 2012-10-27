@@ -45,6 +45,16 @@ public class Startup extends Story{
 		assertTrue(myMainContext.is_entered());
 		assertTrue(myMainInteraction.is_open());
 	}
+
+    @Test
+    public void exiting_Example_disposes_the_main_interaction() {
+        // When
+        assertTrue(myExample.is_running());
+        myExample.exit();
+
+        //It should
+        assertTrue(myMainContext.getInteraction() == null);
+    }
 	
 	@Test
 	public void example_should_have_a_build_version() {

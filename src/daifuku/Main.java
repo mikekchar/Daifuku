@@ -32,11 +32,10 @@ public abstract class Main extends Context {
 	}
 
 	/**
-	 * When the Main Context exits, the Application should exit too.
+	 * Provide a way for the application to quit.
 	 */
-	@Override 
-	public void exit(){
-		super.exit();
+	public void quit(){
+		exit();
 		
 		getParent().exit();
 	}

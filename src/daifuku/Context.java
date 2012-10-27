@@ -89,14 +89,8 @@ public abstract class Context {
 	 * It is important to realize that even though the new Context 
      * is entered, the old Context is still active.  There is 
      * no concept of "modal" Contexts.  However, a child
-	 * Context must be able to request functionality from 
-     * a parent, and so the parent is kept.  Ideally, the parent 
-     * should not contact the child except for entering it.
-	 * It is common for a child Context to call exit() on the parent Context.
-	 * 
-	 * @param aParent The context that was active when this Context is entered.
 	 */
-    void enter() {
+    public void enter() {
 		haveIEntered = true;
 		if (getInteraction() != null) {
 			getInteraction().open();
@@ -117,7 +111,7 @@ public abstract class Context {
 	 * Exit the Context.
 	 * This will close the interaction if it isn't already closed.
 	 */
-    void exit() {
+    public void exit() {
 		if (is_entered()) {
 			if(getInteraction() != null) {
 				if (myParent.getInteraction() != null) {
