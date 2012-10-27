@@ -12,6 +12,19 @@ import javax.swing.JFrame;
 import daifuku.Context;
 import daifuku.Main;
 
+/**
+ * A main window implemented with a Swing widget.
+ * Since virtually all Swing applications need a main window,
+ * this is a convenient class to extend.  However, you must
+ * make sure to create a derived class that implements the
+ * Interaction Interface for your application.
+ *
+ * Note: When adding and removing widgets, we downcast the
+ * widget to a Component interface.  All Swing widgets implement
+ * the Component interface, so this is safe to do.  With other
+ * widget libraries, you might have to implement a similar
+ * Interface.
+ */
 public class Window extends JFrame implements Main.Interaction {
 
 	/**
@@ -115,7 +128,6 @@ public class Window extends JFrame implements Main.Interaction {
     * Add a widget to the contents of the pane.
     */
 	public void add(Context.Interaction anInteraction) {
-        // TODO: Get rid of downcast
 		this.getContentPane().add((Component)anInteraction);
 	}
 
@@ -123,7 +135,6 @@ public class Window extends JFrame implements Main.Interaction {
      * Remove a widget from the contents of the pane
      */
 	public void remove(Context.Interaction anInteraction) {
-        // TODO: Get rid of downcast
 		this.getContentPane().remove((Component)anInteraction);
 	}
 
