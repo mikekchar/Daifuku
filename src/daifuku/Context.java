@@ -49,7 +49,7 @@ public abstract class Context {
 	final FactoryInterface myFactory;
 	final ParentInterface myParent;
 
-	Context(ParentInterface aParent, FactoryInterface aFactory) {
+	public Context(ParentInterface aParent, FactoryInterface aFactory) {
 		haveIEntered = false;
 		myParent = aParent;
         myFactory = aFactory;

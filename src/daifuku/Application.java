@@ -20,7 +20,6 @@ public abstract class Application implements ParentInterface {
 	public Application(FactoryInterface aFactory) {
 		myFactory = aFactory;
 		amIRunning = false;
-		myFactory.loadStrings();
 	}
 
     /**

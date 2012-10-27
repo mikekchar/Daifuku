@@ -13,6 +13,10 @@ import example.swing.Window;
  */
 public class ExampleFactory extends DaifukuFactory implements example.FactoryInterface {
 
+    public ExampleFactory() {
+        super();
+    }
+
     /**
      * Provides the name for the Strings resource bundle.
      */

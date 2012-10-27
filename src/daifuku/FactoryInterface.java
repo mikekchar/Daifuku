@@ -1,37 +1,32 @@
 package daifuku;
 
 /**
- * Creates an Interaction given a Context.
- * This is an interface.
- * The Interactions are implemented separately from the Context.  This
- * is for two reasons.  First, it creates a separation from the business
- * logic of the application (which exists in the Context) and the
- * actual GUI (which exists in the Interaction).  Secondly, it allows
- * us to implement the GUI using more than one widget library without
- * changing the business logic.  Unfortunately, creating this separation
- * means that we need to instantiate the Interactions separately from
- * the Contexts. 
+ * An Interface for creating UI specific ojects.
  *
- * The InteractionFactory also currently acts as a place to hold
- * string resources for all the Contexts.
- * TODO: It makes some sense to put it here, but something smells bad. 
+ * The factory allows the creation of concrete objects of
+ * the correct type for the UI that is being used.  We may want
+ * to create different UIs for different devices or even
+ * just different locales.  We may need to even use different
+ * widget libraries for different UIs. This interface allows
+ * us to abstract the creation of the concrete UI objects.
+ *
+ * There are three different kinds of UI abstraction here.
+ * The first is for strings.  The concrete factory must
+ * provide a method to look up string translations.
+ *
+ * The second is for test UI's.  The concrete factory must
+ * determine if the UI should be visible to the user or not.
+ *
+ * The third is for the construction of the concrete
+ * Interactions.
  * 
  * @author Mike Charlton
  *
  */
 public interface FactoryInterface {
-    /** 
-     * Load the string resources for these Contexts.
-     */
-    public void loadStrings();
 
     /**
-     * Bundle resource class name for strings in the application.
-     */
-    public String stringsBundleName();
-
-    /**
-     * Return the correct string for a given key
+     * Return the correct translation string for a given key
      */
 	public String getString(String key);
 	 

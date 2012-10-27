@@ -3,13 +3,34 @@ package daifuku;
 import java.util.ResourceBundle;
 
 /**
- * Creates an Interaction given a Context.
+ * Implementation of a Factory Interface.
+ *
+ * This implementation uses ResourceBundles to translate strings.
+ * You must override stringsBundleName() to provide the path
+ * to the bundle.
+ *
+ * By default, the UI is shown to the user.  If you wish to use
+ * this factory for tests, you should probably override showUI()
+ * to return false.
+ *
+ * Finally there is an example of how to create a method for instantiating
+ * a Main.Interaction.  It returns null, because nobody should be using
+ * a daifuku.Main.Interaction.  
+ *
  * @author Mike Charlton
  *
  */
-public class DaifukuFactory implements FactoryInterface {
+public abstract class DaifukuFactory implements FactoryInterface {
 	
 	private ResourceBundle strings;
+
+    public DaifukuFactory() {
+        String bundleName = stringsBundleName();
+
+        if (bundleName != null) {
+            loadStrings(stringsBundleName());
+        }
+    }
 
     /**
      * Returns true if the UI should be shown.
@@ -25,14 +46,12 @@ public class DaifukuFactory implements FactoryInterface {
      * Return the name of the string Resource.
      * This must be overriden in the concrete classes.
      */
-    public String stringsBundleName() {
-        return null;
-    }
+    public abstract String stringsBundleName();
 
     /** 
      * Load the string resources for these Contexts.
      */
-	public void loadStrings() {
+	public void loadStrings(String bundleName) {
 		strings = ResourceBundle.getBundle(stringsBundleName());
 	}
 	
