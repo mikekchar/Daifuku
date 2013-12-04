@@ -7,7 +7,9 @@ package example.swing;
  * example version of Main.
  */
 public class Window extends daifuku.swing.Window implements example.Main.Interaction {
-
+	
+	private static final long serialVersionUID = 781198792258981628L;
+	
     public Window(example.Main aContext) {
         super(aContext);
     }

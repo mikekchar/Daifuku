@@ -1,8 +1,5 @@
 package tests.mocks;
 
-import daifuku.Application;
-import example.FactoryInterface;
-
 /**
  * Mock for Example.
  * 

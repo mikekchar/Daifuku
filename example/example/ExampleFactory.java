@@ -1,9 +1,6 @@
 package example;
-import java.util.ResourceBundle;
 
 import daifuku.DaifukuFactory;
-import example.swing.Window;
-
 
 /**
  * Implements the Swing version of the widgets for the Example.

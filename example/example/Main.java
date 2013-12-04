@@ -4,8 +4,6 @@ import java.net.URL;
 import java.lang.String;
 
 import daifuku.Context;
-import daifuku.ParentInterface;
-import daifuku.FactoryInterface;
 
 /**
  * This is the Main Context for the Example.

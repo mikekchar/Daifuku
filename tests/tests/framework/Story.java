@@ -1,6 +1,5 @@
 package tests.framework;
 
-import example.FactoryInterface;
 import example.Main;
 
 import tests.mocks.Example;
